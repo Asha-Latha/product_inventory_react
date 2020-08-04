@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#footer{
+  margin-top:350px;
+  text-align: center;
+}
+
+#header{
+  text-align: center;
+}
+
+#login{
+  text-align: center;
+  margin-top:150px;
+}
+
+#register{
+  text-align: center;
+  margin-top:-25px;
+  margin-left: 150px;
+}
+
+#product{
+  text-align: center;
+}
