@@ -1,0 +1,90 @@
+body{
+    margin: 100px;
+    text-align: center;
+    }
+input[type=text],[type=password],[type=number]{
+    width: 70%;
+    margin: 8px 0;
+    padding: 7px 10px;
+    display: inline-block;
+    border:1px solid #ccc;
+    box-sizing: border-box;
+    }
+     
+    button{
+    background-color:#4CAF50;
+    width: 20%;
+    padding: 9px 5px;
+    margin:5px 0;
+    cursor:pointer;
+    border:none;
+    color:#ffffff;
+    margin-left: 40px;
+    }
+     
+    button:hover{
+    opacity:0.8;
+    }
+     
+    #id,#description,#quantity,#in_stock,#price,#category{
+    font-family:'Lato', sans-serif;
+    color: gray;
+    }
+     
+    /* #em{
+    margin-left:30px;
+    } */
+    #productadd{
+        align-items: center;
+        width: 400px;
+        height: 400px;  
+       margin:auto;
+        box-sizing: border-box;
+        border:1px solid black;
+        
+    }
+
+    #labelsearch{
+
+        color: darkcyan; font-size: 20px;
+        margin-left: 500px;
+    }
+#labelview{
+ 
+    margin-left: 1050px;
+    color: darkcyan; font-size: 20px;
+}
+
+#table{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+
+}
+
+
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  #table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+#table th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+    background-color: darkcyan;
+    color: white;
+  }
+#product-details{
+ margin-top: 75px;
+ margin-left:250px
+
+
+}
+
+#forSearch{
+    width: 20%;
+}

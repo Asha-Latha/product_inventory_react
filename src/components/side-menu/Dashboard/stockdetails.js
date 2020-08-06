@@ -1,4 +1,5 @@
 import React from 'react';
+import Menu from '../products/menu'
 
 class StockDisplay extends React.Component {
     state = {  }
@@ -6,7 +7,9 @@ class StockDisplay extends React.Component {
         return ( 
 
             <div>
+                
                 <h2>Stock Details</h2>
+                <Menu></Menu> 
             </div>
          );
     }

@@ -1,0 +1,39 @@
+body{
+    background-color: #F8F0EE;
+}
+#logo {
+    height: 120px;
+        float: left;
+        margin-top: -20px;
+        margin-left: -98px;
+      
+    } 
+    h4{
+        font-size: 43px;
+        text-align: center;
+        /* float: left; */
+        margin-top: -82px;
+        margin-right: 175px;
+        font-style: italic;
+        font-family: unset;
+    }
+
+    #login {
+        float: right;
+        font-family: cursive;
+    font-size: 28px;
+    margin-right: 90px;
+    margin-top: -105px;;
+
+    }
+
+    #register {
+        float: right;
+        font-family: cursive;
+        font-size: 28px;
+        margin-right: 191px;
+        margin-top: -104px;
+    }
+
+    
+

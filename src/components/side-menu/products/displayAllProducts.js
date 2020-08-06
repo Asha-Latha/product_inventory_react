@@ -7,7 +7,7 @@ class DisplayAllProducts extends React.Component {
     render() { 
         return ( 
             <div>
-                <AddProduct></AddProduct>
+                {/* <AddProduct></AddProduct> */}
                 <AllProducts></AllProducts>
             </div>
          );

@@ -1,0 +1,47 @@
+body{
+    margin: 100px;
+    text-align: center;
+    }
+     
+    input[type=text],[type=password],[type=number]{
+    width: 50%;
+    margin: 8px 0;
+    padding: 7px 10px;
+    display: inline-block;
+    border:1px solid #ccc;
+    box-sizing: border-box;
+    }
+     
+    button{
+    background-color:#4CAF50;
+    width: 40%;
+    padding: 9px 5px;
+    margin:5px 0;
+    cursor:pointer;
+    border:none;
+    color:#ffffff;
+    margin-left: 40px;
+    }
+     
+    button:hover{
+    opacity:0.8;
+    }
+     
+    #fn,#ln,#un{
+    font-family:'Lato', sans-serif;
+    color: gray;
+    }
+     
+    /* #em{
+    margin-left:30px;
+    } */
+    #categoryadd{
+        align-items: center;
+        width: 400px;
+        height: 250px;  
+       margin:auto;
+        box-sizing: border-box;
+        border:1px solid black;
+        
+    }
+  
