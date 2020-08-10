@@ -2,14 +2,19 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../../side-menu/products/addproducts.css';
 import ShowProducts from './showProducts';
+import { withRouter } from "react-router-dom";
 import axios from 'axios';
-class AllProducts extends React.Component {
+export class AllProducts extends React.Component {
     constructor(props){
       super(props);
       this.state={
         deleteSuccess:false,
-            myid:0,
-      allproducts:[]
+        searchV:'',
+        dropdownvalue:'',
+        myid:0,
+        allproducts:[],
+        finalSearchValue:[],
+        dropdownCategory:[]
       }
     }
 
@@ -19,27 +24,31 @@ class AllProducts extends React.Component {
       }, 2000)
   }
     componentWillMount(){
+      axios.get('http://localhost:3000/addcategory')
+      .then((response)=>{
+           this.setState({dropdownCategory: response.data})
+           console.log(response)},(error)=>{
+           console.log(error)    
+      })
       this.getProducts()
   }
 
   getProducts(){
       axios.get('http://localhost:3000/addproduct')
-      .then((response)=>{
-         
+      .then((response)=>{   
            this.setState({allproducts: response.data})
+           this.setState({finalSearchValue: response.data})
           console.log(response)},(error)=>{
-              console.log(error)
-          
+              console.log(error)     
       })
   }
 
   editProductWithId=(id)=>{
     console.log('edit product for received id: ' + id);
-
     this.setState({myid: id})
-        console.log('Edit friend with id: ' + id);
-        this.props.history.push({
-                                    pathname: '/editfriend', 
+        console.log('Edit product with id: ' + id);
+        this.props.history.push({ 
+                                    pathname: '/editProduct', 
                                     state: {myid: id}
                                 })
     
@@ -51,33 +60,58 @@ class AllProducts extends React.Component {
     axios.delete('http://localhost:3000/addproduct/' + id)
             .then(response=>{
                  console.log(response)
-                 //show deleteSuccess message
                  this.setState({deleteSuccess: true})
                  this.getProducts()
-                 //remove deleteSuccess message after 2000 millisecond
                  this.intializeState()
             }, error=>{
                 console.error(error)
             })
 }
+  
+getSearch=(e)=>{
+  let searchvalue = e.target.value.toLowerCase();
+  if(searchvalue === ''){
+  // this.getProducts()
+  }
 
+  this.setState({searchV : searchvalue})
+  console.log(searchvalue);
+   let searchProducts = this.state.finalSearchValue.filter(f=>
+    {
+      return  f.productName.toLowerCase().match(searchvalue.toLowerCase())
+    })
+    this.setState({
+    allproducts: searchProducts
+    })
+}
+
+getCategory=(e)=>{
+  let dp = e.target.value;
+  this.setState({dropdownvalue:dp})  
+  let dpvalues = this.state.finalSearchValue.filter(f=>{
+    return f.category.match(dp)
+  })
+  this.setState({
+   allproducts:dpvalues
+  })
+}
 
     renderProducts=()=>{
       console.log('in render products')
       return (
           this.state.allproducts.map(showProducts=>{
               return (
-                  <ShowProducts 
-                  
+                  <ShowProducts   
                   id = {showProducts.id}
+                  productimage={showProducts.productimage}
                   description = {showProducts.description}
+                  productName={showProducts.productName}
                   category = {showProducts.category}
                   quantity ={showProducts.quantity}
                   in_stock = {showProducts.in_stock}
                   price={showProducts.price}
                    editId={this.editProductWithId}
                 deleteId={this.deleteProductWithId}>
-
                   </ShowProducts>
               )
           })
@@ -86,54 +120,27 @@ class AllProducts extends React.Component {
     render() { 
         return ( 
             <div>
-                {/* <h2>All Products</h2> */}
                 <div id="add-product">
-
 <button type="submit" value="add"  id="submit" > <Link to="/addProduct">Product +</Link></button>
 <button type="submit" value="addcategory"  id="submit" > <Link to="/addCategory">Category +</Link></button>
-</div >
+</div ><br></br>
 <div id="drop-down">
-    <label for="view" id="labelview">View :</label>
-    <select name="view" id="view" >
-      <option value="active">Active</option>
-      <option value="inactive">In-Active</option>
-      
-    </select>
-</div>
-
+<label  for="r3" id="un"> Filter Category:</label>
+<select id="pd" onChange={this.getCategory} >
+    <option value="select">Select</option>
+               {this.state.dropdownCategory.map(p=><option value={p.categoryName}>{p.categoryName}</option>)}
+</select></div>
 <div id = "search">
     <label id="labelsearch">Search Product: </label>
-    <input type="text" name="search" id="forSearch"></input> 
+    <input type="text" name="search" id="forSearch" value={this.state.searchV}  onChange={this.getSearch}></input> 
 </div>
-
-
-
-
-<div id="product-details"><table id="table">
-  <thead>
-    <tr>
-      <th>Product ID</th>
-      <th>Description</th> 
-      <th>Product Category</th>
-      <th>Quantity</th>
-      <th>In-Stock</th> 
-      <th>Price</th>
-      <th>Edit</th> 
-      <th>Delete</th>
-    </tr></thead>
-    <tbody>
-        
-        {this.renderProducts()} 
-        </tbody>
-  </table>
-  {this.state.deleteSuccess &&
-                    <div>
-                          <h3>Product deleted !!!!</h3>  
-                    </div>}
-</div>
+<br></br>
+<div className="row">
+{this.renderProducts()} 
+  </div>
             </div>
          );
         }   
 }
  
-export default AllProducts;
+export default withRouter(AllProducts);

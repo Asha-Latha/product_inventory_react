@@ -46,7 +46,7 @@ button:hover{
 opacity:0.8;
 }
  
-#fn,#ln,#un,#pwd,#em,#mn,#fm,#cy{
+#fistName,#lastName,#email,#password,#mobile{
 font-family:'Lato', sans-serif;
 color: gray;
 }

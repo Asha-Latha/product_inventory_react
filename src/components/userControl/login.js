@@ -2,64 +2,85 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../userControl/login.css';
 import axios from 'axios';
+import qs from "qs";
+import {withRouter} from 'react-router-dom';
+
 
 class Login extends React.Component {
     constructor(props){
         super(props);
  this.state={
-    uname : "",
-    upass: ""
-   
+    email : "",
+    password: "",
+    emailError:"",
+    passwordError:"",
+    buttonStatus:true  
  }
 }
-    getUsername=(e)=>{
+
+
+getEmail=(e)=>{
       console.log(e.target.value);
-      this.setState({uname: e.target.value})
+      this.setState({email: e.target.value})
+
     }
 
     getPassword=(e)=>{
        console.log(e.target.value);
-       this.setState({upass: e.target.value})
+       this.setState({password: e.target.value})
     }
 
-    userLogin=(e)=>{
-        console.log('user login')
-        let loginRequestBody = {
-            "userName": this.state.uname,
-            "password": this.state.upass
-        }
+    // valid=()=>{
 
-        axios.post('http://localhost:3000/logindetails', loginRequestBody)
-        .then(response=>{
-            console.log(response);
-            // this.props.history.push('/')
-        }, error=>{
-            console.error(error);
-        })
-}
-    
+    //     if(!this.state.email.includes("@") && this.state.password.length<5){
+    //         this.setState({emailError:"Enter valid email",passwordError:"Password length should be more than 5",buttonStatus:true})
+    //      return false;
+    //     }
+    //     this.setState({
+    //         emailError:'',
+    //         buttonStatus:false
+    //     })
+    //     return true
+    // }
+    userLogin= async() =>{
+        console.log('user login')
+         const data= await axios.get('http://localhost:3000/addregistration?email='+ this.state.email);
+         console.log(data);
+          if(data.data.length !== 0){         
+             if(this.state.password === data.data[0].password){
+                this.props.history.push("/side-menu")
+             }
+             else{
+                 alert("invalid user")
+                 console.log("invalid user")
+                 this.props.history.push("/login")
+             }
+         }
+        }   
     
     render() { 
         return ( 
             <div id="loginpage">
-                <form id="flogin">
- 
-<div class="border-box">
+                
+                <form id="flogin" >
+<div className="border-box">
+
 <h2>Login Form</h2>
 
-<label for="uname" id="un">Username:</label>
-<input type="text" name="username" placeholder="Enter Username" id="uname" onChange={this.getUsername}></input><br></br>
- 
-<label for="upass" id="ps">Password:</label>
+<label  id="un">Email:</label>
+<input type="text" name="username" placeholder="Enter Email" id="uname" onChange={this.getEmail}></input><br></br>
+        {/* <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.emailError}</p> */}
+<label  id="ps">Password:</label>
 <input type="password" name="password" placeholder="Enter Password" id="upass" onChange={this.getPassword}></input>
- 
-{/* <button type="submit" value="Login" onClick={this.userLogin} id="submit"><Link to="/side-menu">Login</Link></button> */}
-<button type="submit" value="Login" onClick={this.userLogin} id="submit"><Link to="/side-menu">Login</Link></button>
+{/* <p>{this.state.passwordError}</p> */}
+</div> 
+</form> 
+ <button type="submit" value="Login" id="submit" onClick={this.userLogin}>Login</button>
  
 <a href="register.html">New Member</a>
- </div> 
  
-</form>               
+ 
+              
             </div>
          );
     }

@@ -11,14 +11,13 @@ import AllProducts from './side-menu/products/allproducts';
 import StockDisplay from './side-menu/Dashboard/stockdetails';
 import Offers from './side-menu/offers/offers';
 import DisplayAllProducts from './side-menu/products/displayAllProducts';
-
+import EditProduct from './side-menu/products/editProduct';
 class RootComponent extends React.Component {
     state = {  }
     render() { 
         return ( 
             <div>
-                <Header></Header>
-                
+                <Header></Header>       
                 <Switch>
                     <Route exact path="/" component={Login}></Route>
                 <Route path='/login' component={Login}></Route>
@@ -29,8 +28,9 @@ class RootComponent extends React.Component {
                 <Route path='/stockdetails' component={StockDisplay}></Route>
                 <Route path='/offers' component={Offers}></Route>
                 <Route path='/displayAllProducts' component={DisplayAllProducts}></Route>
-                </Switch>
-                       
+                <Route path='/editProduct' component={EditProduct}></Route>
+                <Route path='/editProduct' component={EditProduct}></Route>
+                </Switch>           
                 <Footer></Footer>
             </div>
          );

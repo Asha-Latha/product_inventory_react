@@ -1,32 +1,41 @@
 import React from 'react';
-class ShowProducts extends React.Component {
+import {withRouter} from 'react-router-dom';
+import '../../side-menu/products/addproducts.css';
+ class ShowProducts extends React.Component {
    
     constructor(props){
-        super(props)
+        super(props);
+        this.state={
+        myid:0}
+    }
 
+    editCurrentProduct=()=>{       
+         console.log("edit friend with id: " + this.props.id);
+         this.props.editId(this.props.id)
     }
     deleteCurrentProduct=()=>{
         console.log("delete product with id: " + this.props.id);
         this.props.deleteId(this.props.id)
     }
-    render() { 
+    render() {
+        let imgStyle ={
+            width:'100%',
+            borderRadius:'10px'
+        } 
         return ( 
-
-            <tr>
-            <td>{this.props.id}</td>
-            <td>{this.props.description}</td>
-            <td>{this.props.category}</td>
-            <td>{this.props.quantity}</td>
-            <td>{this.props.in_stock}</td> 
-            <td>{this.props.price}</td>
-            <td>
-                    <button>Edit</button>
-                </td>
-                <td>
-                    <button onClick={this.deleteCurrentProduct}>Delete</button>
-                </td>
-
-            </tr>
+            <div className="column">
+            <div className="card">
+            <img src={"images/" + this.props.productimage} style={imgStyle}></img>
+            <h3>{this.props.productName}</h3>
+            <p>Category: {this.props.category}</p>
+            <p>Description: {this.props.description}</p>
+            <p>Quantity : {this.props.quantity}</p>
+            <p>Price:{this.props.price} </p>
+            <p>In-Stock:{this.props.in_stock}</p>
+            <p><button onClick={this.editCurrentProduct}>Edit</button>
+              <button onClick={this.deleteCurrentProduct}>Delete</button></p>
+                </div>
+                </div>
        
          );
     }

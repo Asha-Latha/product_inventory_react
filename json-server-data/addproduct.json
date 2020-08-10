@@ -1,20 +1,82 @@
 {
   "addproduct": [
     {
-      "id": 1,
-      "description": "egr",
-      "category": "etrt",
-      "quantity": "5",
+      "id": "2",
+      "productimage": "mobile.png",
+      "description": "Realme realme realme",
+      "productName": "Realme",
+      "category": "Mobiles",
+      "quantity": "2",
       "in_stock": "1",
-      "price": "5$"
+      "price": "56000"
     },
     {
-      "id": 2,
-      "description": "egr",
-      "category": "etrt",
-      "quantity": "5",
+      "id": "45",
+      "productimage": "mobile1.jpg",
+      "description": "mobile mobile mobile",
+      "productName": "New Mobile",
+      "category": "Mobiles",
+      "quantity": "2",
       "in_stock": "1",
-      "price": "5$"
+      "price": "12000"
+    },
+    {
+      "productimage": "table1.jpg",
+      "description": "chair",
+      "productName": "Chair",
+      "category": "Home",
+      "quantity": "2",
+      "in_stock": "1",
+      "price": "1",
+      "id": "5"
+    }
+  ],
+  "addcategory": [
+    {
+      "id": "1",
+      "categoryName": "Home"
+    },
+    {
+      "id": "3",
+      "categoryName": "Mobiles"
+    },
+    {
+      "id": "6",
+      "categoryName": "Clothing"
+    }
+  ],
+  "addregistration": [
+    {
+      "firstName": "oo",
+      "lastName": "kj",
+      "email": "kjj",
+      "password": "kkkh",
+      "mobile": "kkkh",
+      "id": 41
+    },
+    {
+      "firstName": "Asha",
+      "lastName": "Latha",
+      "email": "asha@gmail.com",
+      "password": "123",
+      "mobile": "12345",
+      "id": 42
+    },
+    {
+      "firstName": "k",
+      "lastName": "k",
+      "email": "k",
+      "password": "k",
+      "mobile": "k",
+      "id": 43
+    },
+    {
+      "firstName": "Asha",
+      "lastName": "Latha",
+      "email": "ashalatha@gmail.com",
+      "password": "123456",
+      "mobile": "8096745411",
+      "id": 44
     }
   ]
 }

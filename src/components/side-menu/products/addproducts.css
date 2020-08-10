@@ -10,6 +10,8 @@ input[type=text],[type=password],[type=number]{
     border:1px solid #ccc;
     box-sizing: border-box;
     }
+
+
      
     button{
     background-color:#4CAF50;
@@ -26,9 +28,9 @@ input[type=text],[type=password],[type=number]{
     opacity:0.8;
     }
      
-    #id,#description,#quantity,#in_stock,#price,#category{
+    #id,#description,#quantity,#in_stock,#price,#category,#productName{
     font-family:'Lato', sans-serif;
-    color: gray;
+    color: black;
     }
      
     /* #em{
@@ -37,18 +39,24 @@ input[type=text],[type=password],[type=number]{
     #productadd{
         align-items: center;
         width: 400px;
-        height: 400px;  
+        height: 469px;  
        margin:auto;
         box-sizing: border-box;
         border:1px solid black;
         
     }
-
+    * {
+        box-sizing: border-box;
+      }
     #labelsearch{
 
         color: darkcyan; font-size: 20px;
         margin-left: 500px;
     }
+/* 
+    #search{
+            margin-top:-31px;
+    } */
 #labelview{
  
     margin-left: 1050px;
@@ -88,3 +96,57 @@ input[type=text],[type=password],[type=number]{
 #forSearch{
     width: 20%;
 }
+
+
+.column {
+      float: left;  
+    width: 25%;
+    padding: 0 10px;
+      /* margin-left: 325px;   */
+
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  /* .row {margin: 0 -5px;} */
+  .row{
+  margin-left: 150px;
+    margin-top: 0px;
+    margin-right: -5px;
+        margin-bottom: 2px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.5s;
+   
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+
+  #linkbutton{
+    margin-top: -51px;
+  }
+   /* #drop-down{
+         margin-left: -200px;
+  }  */
