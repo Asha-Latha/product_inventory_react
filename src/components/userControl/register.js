@@ -13,16 +13,16 @@ class Register extends React.Component {
             password:'',
             mobile:'',
             buttonStatus: true,
-            firstNameError:'',
-            lastNameError:'',
-            emailError:'',
-            passwordError:'',
-            mobileError:''
+            firstNameError:'name must contain min 3 characters',
+            lastNameError:'last name must contain 3 characters',
+            emailError:'Enter valid email',
+            passwordError:'password should contain minimum 5 characters',
+            mobileError:'Enter 10 digit mobile no'
     };
 }
 
 checkFirstNameValidation=()=>{
-if(this.state.firstName.length<3){
+if(this.state.firstName.length<=1){
     this.setState({
         firstNameError:'Name must contain min 3 characters',
         buttonStatus:true
@@ -37,7 +37,7 @@ if(this.state.firstName.length<3){
 
 }
 checkLastNameValidation=()=>{
-    if(this.state.lastName.length<3){
+    if(this.state.lastName.length<=3){
         this.setState({
             lastNameError:'Name must contain min 3 characters',
             buttonStatus:true
@@ -181,8 +181,6 @@ checkMobileValidation=()=>{
 <label  id="mnb">Mobile No :</label>
 <input type="text" name="mno" id="mobile" onChange={this.getMobile}></input>
   <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.mobileError}</p> 
-
-
 </form>
 
 <button type="submit" value="Submit" id="button" onClick={this.register} disabled={this.state.buttonStatus}>Register</button>

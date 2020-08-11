@@ -160,17 +160,17 @@ addProduct=(e)=>{
 </select><br></br><br></br>
 
 <label  for="r4" id="pwd">Quantity </label>&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="number" name="pass" id="quantity" onChange={this.getQuantity}></input><br></br>
+<input type="number" name="pass" id="quantity" min="0" onChange={this.getQuantity}></input><br></br>
 <p style={{color:"red",fontSize:12,fontFamily:"italic"}}></p> 
 
  
 <label  for="r5" id="em">In-Stock </label>
-<input type="number" name="email" id="in_stock" onChange={this.getStock}></input><br></br>
+<input type="number" name="email" id="in_stock" min="0" onChange={this.getStock}></input><br></br>
 <p style={{color:"red",fontSize:12,fontFamily:"italic"}}></p> 
 
  
 <label  for="r6" id="mn">Price </label>&nbsp;
-<input type="number" name="mno" id="price" onChange={this.getPrice}></input><br></br>
+<input type="number" name="mno" id="price" min="0" onChange={this.getPrice}></input><br></br>
 <p style={{color:"red",fontSize:12,fontFamily:"italic"}}></p> 
 
 </form>
