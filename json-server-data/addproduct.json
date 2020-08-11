@@ -1,48 +1,58 @@
 {
   "addproduct": [
     {
-      "id": "2",
-      "productimage": "mobile.png",
-      "description": "Realme realme realme",
+      "productimage": "mobile1.jpg",
+      "description": "realme realme realme",
       "productName": "Realme",
       "category": "Mobiles",
-      "quantity": "2",
+      "quantity": "1",
       "in_stock": "1",
-      "price": "56000"
+      "price": "12000",
+      "id": 1
     },
     {
-      "id": "45",
-      "productimage": "mobile1.jpg",
-      "description": "mobile mobile mobile",
-      "productName": "New Mobile",
-      "category": "Mobiles",
-      "quantity": "2",
-      "in_stock": "1",
-      "price": "12000"
-    },
-    {
-      "productimage": "table1.jpg",
-      "description": "chair",
+      "productimage": "table.jpg",
+      "description": "table table table",
       "productName": "Chair",
-      "category": "Home",
+      "category": "",
+      "quantity": "1",
+      "in_stock": "1",
+      "price": "1200",
+      "id": 2
+    },
+    {
+      "productimage": "shirt.jpg",
+      "description": "shirt shirt shirt",
+      "productName": "Shirts",
+      "category": "Clothing",
       "quantity": "2",
       "in_stock": "1",
       "price": "1",
-      "id": "5"
+      "id": 3
+    },
+    {
+      "productimage": "table.jpg",
+      "description": "table table tab;e",
+      "productName": "Table",
+      "category": "Home",
+      "quantity": "2",
+      "in_stock": "1",
+      "price": "12000",
+      "id": 4
     }
   ],
   "addcategory": [
     {
-      "id": "1",
-      "categoryName": "Home"
+      "categoryName": "Home",
+      "id": 1
     },
     {
-      "id": "3",
-      "categoryName": "Mobiles"
+      "categoryName": "Mobiles",
+      "id": 2
     },
     {
-      "id": "6",
-      "categoryName": "Clothing"
+      "categoryName": "Clothing",
+      "id": 3
     }
   ],
   "addregistration": [
@@ -77,6 +87,22 @@
       "password": "123456",
       "mobile": "8096745411",
       "id": 44
+    },
+    {
+      "firstName": "jyothsna",
+      "lastName": "Asha",
+      "email": "jyothsna@gmail.com",
+      "password": "12345678",
+      "mobile": "8912345678",
+      "id": 45
+    },
+    {
+      "firstName": "Asha latha",
+      "lastName": "Pedapalli",
+      "email": "ashapedapalli@gmal.com",
+      "password": "",
+      "mobile": "9111111111",
+      "id": 46
     }
   ]
 }

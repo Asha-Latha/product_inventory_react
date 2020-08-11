@@ -48,7 +48,11 @@ opacity:0.8;
  
 #fistName,#lastName,#email,#password,#mobile{
 font-family:'Lato', sans-serif;
-color: gray;
+
+}
+
+#mnb{
+    margin-left: -1px;
 }
  
 #em{

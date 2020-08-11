@@ -1,5 +1,6 @@
 import React from 'react';
 import 'font-awesome/css/font-awesome.min.css';
+import '../footer/footer.css'
 class Footer extends React.Component {
     state = {  }
     render() { 

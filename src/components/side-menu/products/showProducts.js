@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import '../../side-menu/products/addproducts.css';
+import '../../side-menu/products/showproducts.css';
  class ShowProducts extends React.Component {
    
     constructor(props){
@@ -19,7 +19,8 @@ import '../../side-menu/products/addproducts.css';
     }
     render() {
         let imgStyle ={
-            width:'100%',
+            width:'200px',
+            height:'205px',
             borderRadius:'10px'
         } 
         return ( 
@@ -30,10 +31,10 @@ import '../../side-menu/products/addproducts.css';
             <p>Category: {this.props.category}</p>
             <p>Description: {this.props.description}</p>
             <p>Quantity : {this.props.quantity}</p>
-            <p>Price:{this.props.price} </p>
+            <p>Price: {this.props.price} </p>
             <p>In-Stock:{this.props.in_stock}</p>
-            <p><button onClick={this.editCurrentProduct}>Edit</button>
-              <button onClick={this.deleteCurrentProduct}>Delete</button></p>
+            <p><button onClick={this.editCurrentProduct} id="editbtn">Edit</button>
+              <button onClick={this.deleteCurrentProduct} id="delbtn">Delete</button></p>
                 </div>
                 </div>
        

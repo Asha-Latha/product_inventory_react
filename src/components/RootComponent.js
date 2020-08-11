@@ -17,7 +17,7 @@ class RootComponent extends React.Component {
     render() { 
         return ( 
             <div>
-                <Header></Header>       
+                      
                 <Switch>
                     <Route exact path="/" component={Login}></Route>
                 <Route path='/login' component={Login}></Route>
@@ -28,7 +28,6 @@ class RootComponent extends React.Component {
                 <Route path='/stockdetails' component={StockDisplay}></Route>
                 <Route path='/offers' component={Offers}></Route>
                 <Route path='/displayAllProducts' component={DisplayAllProducts}></Route>
-                <Route path='/editProduct' component={EditProduct}></Route>
                 <Route path='/editProduct' component={EditProduct}></Route>
                 </Switch>           
                 <Footer></Footer>

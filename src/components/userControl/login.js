@@ -4,6 +4,7 @@ import '../userControl/login.css';
 import axios from 'axios';
 import qs from "qs";
 import {withRouter} from 'react-router-dom';
+import Header from '../header/header';
 
 
 class Login extends React.Component {
@@ -59,28 +60,31 @@ getEmail=(e)=>{
         }   
     
     render() { 
-        return ( 
+        return (
+            <div>
+            <Header></Header>
             <div id="loginpage">
+
                 
                 <form id="flogin" >
 <div className="border-box">
 
 <h2>Login Form</h2>
 
-<label  id="un">Email:</label>
+<label  >Email:</label>&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="text" name="username" placeholder="Enter Email" id="uname" onChange={this.getEmail}></input><br></br>
         {/* <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.emailError}</p> */}
-<label  id="ps">Password:</label>
+<label  >Password:</label>
 <input type="password" name="password" placeholder="Enter Password" id="upass" onChange={this.getPassword}></input>
 {/* <p>{this.state.passwordError}</p> */}
 </div> 
 </form> 
- <button type="submit" value="Login" id="submit" onClick={this.userLogin}>Login</button>
+ <button type="submit" value="Login" id="submit" onClick={this.userLogin}>Login</button> &nbsp;
  
-<a href="register.html">New Member</a>
+<Link to="/register">New Member</Link>
  
  
-              
+</div> 
             </div>
          );
     }

@@ -1,34 +1,18 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Logout from '../../logout/logout';
+import '../../side-menu/products/addcat.css'
 
 class Category extends React.Component {  
     constructor(props){
         super(props);
         this.state={    
-            cid:'',
             cname:'',
             categoryNameError:'',
-            categoryIdError:'',
             buttonStatus:true
         }
     }
-
-    checkValidateCategoryId=()=>{
-        if(this.state.cid){
-            this.setState({
-                categoryIdError:"Mandatory",
-                buttonStatus:true
-            })  
-        }
-        else{
-            this.setState({
-                categoryIdError:'',
-                buttonStatus:false
-            })
-        }
-    }
-  
 checkValidateCategoryName=()=>{
     if(this.state.cname.length<1){
         this.setState({
@@ -44,12 +28,6 @@ checkValidateCategoryName=()=>{
     }
 }
 
-getCategoryId=(e)=>{
-this.checkValidateCategoryId()
-this.setState({cid:e.target.value})
-this.checkValidateCategoryId()
-}
-
 getCategoryName=(e)=>{
 this.checkValidateCategoryName()
 this.setState({cname:e.target.value})
@@ -59,10 +37,9 @@ this.checkValidateCategoryName()
 addCategory=()=>{
     console.log('add category')
     let addcategory = {
-        "id": this.state.cid,
         "categoryName": this.state.cname   
     }
-    if(this.state.categoryNameError===''&&this.state.categoryIdError==='')
+    if(this.state.categoryNameError==='')
     axios.post('http://localhost:3000/addcategory', addcategory)
     .then(response=>{      
         console.log("added category");
@@ -74,19 +51,18 @@ addCategory=()=>{
 
     render() { 
         return (
-            <div id="categoryadd"><div>
-            <Link to="/side-menu"><button>Go Back</button></Link>
+            <div><Logout></Logout>
+            <div id="categoryadd">
+             <div>
+            <Link to="/side-menu"><button id="gobtn">Go Back</button></Link>
            </div>
-    <form name ="" action="">
-    <label for="r1" id="fn"> Category Id:</label>
-    <input type="number" name="fname" id="cid"  onChange={this.getCategoryId}></input><br></br>
-    <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.categoryIdError}</p> 
-    <label  for="r3" id="un"> Category Name </label>
-    <input type="text" name="uname" id="cname"  onChange={this.getCategoryName}></input> 
+    <form name ="">
+      <label  for="r3"> Category Name </label>&nbsp;
+    <input type="text" name="uname" id="catname"  onChange={this.getCategoryName}></input> 
     <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.categoryNameError}</p> 
     </form>   
-    <Link to="/side-menu"><button type="submit" value="Submit" id="button" onClick={this.addCategory} disabled={this.state.buttonStatus}>Add Category</button></Link>
-    
+    <Link to="/side-menu"><button type="submit" value="Submit" id="sbtbutton" onClick={this.addCategory} disabled={this.state.buttonStatus}>Add Category</button></Link>
+    </div>
     </div>
           );
     }

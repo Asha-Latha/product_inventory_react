@@ -3,7 +3,9 @@ import {Link} from 'react-router-dom';
 import '../../side-menu/products/addproducts.css';
 import ShowProducts from './showProducts';
 import { withRouter } from "react-router-dom";
+
 import axios from 'axios';
+import Logout from '../../logout/logout';
 export class AllProducts extends React.Component {
     constructor(props){
       super(props);
@@ -118,15 +120,25 @@ getCategory=(e)=>{
       )
 }
     render() { 
+      let linkstyle={
+           textDecoration:'none',
+           color:'white'
+      }
         return ( 
+          
+          <div><Logout></Logout>
             <div>
                 <div id="add-product">
-<button type="submit" value="add"  id="submit" > <Link to="/addProduct">Product +</Link></button>
-<button type="submit" value="addcategory"  id="submit" > <Link to="/addCategory">Category +</Link></button>
+<button type="submit" value="add"  id="submit" > <Link to="/addProduct" id="addpdct">Product +</Link></button>
+<button type="submit" value="addcategory"  id="submit" > <Link to="/addCategory" style={{linkstyle}}>Category +</Link></button>
+<button type="submit" value="addcategory"  id="submit" > <Link to="/stockdetails">Dashboard </Link></button>
+<button type="submit" value="addcategory"  id="submit" > <Link to="/offers">Offers </Link></button>
+
+
 </div ><br></br>
 <div id="drop-down">
-<label  for="r3" id="un"> Filter Category:</label>
-<select id="pd" onChange={this.getCategory} >
+<label  for="r3" id="fcat"> Filter Category:</label>
+<select id="pdf" onChange={this.getCategory} >
     <option value="select">Select</option>
                {this.state.dropdownCategory.map(p=><option value={p.categoryName}>{p.categoryName}</option>)}
 </select></div>
@@ -137,7 +149,7 @@ getCategory=(e)=>{
 <br></br>
 <div className="row">
 {this.renderProducts()} 
-  </div>
+  </div></div>
             </div>
          );
         }   

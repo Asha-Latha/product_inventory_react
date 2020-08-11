@@ -1,6 +1,7 @@
 import React from 'react';
-import Menu from '../products/menu';
 import logo from '../../../images/offer.jpg'
+import Logout from '../../logout/logout';
+import {Link} from 'react-router-dom'
 
 class Offers extends React.Component {
     state = {  }
@@ -11,11 +12,15 @@ class Offers extends React.Component {
             marginLeft: '200px'
         } 
         return ( 
+            <div><Logout></Logout>
             <div>
-                 <Menu></Menu> 
-               
+            <Link to="/side-menu"><button id="gobtn">Go Back</button></Link>
+           </div>
+            <div>
+                 
                 <img src={logo} alt="logo" id="offer" style={imgStyle}></img>
                 
+            </div>
             </div>
          );
     }

@@ -1,6 +1,8 @@
 import React from 'react';
 import '../userControl/register.css';
 import Axios from 'axios';
+import Login from './login';
+import Header from '../header/header';
 class Register extends React.Component {
     constructor(props){
         super(props)
@@ -154,9 +156,10 @@ checkMobileValidation=()=>{
 
     }
     render() { 
-        return (        
+        return (    
+            <div><Header></Header>  
             <div id="registerpage">                
-<form action="" noValidate>
+<form action="" >
 <h2>Registration Form</h2>
  
 <label  id="fn">First Name :</label>
@@ -175,7 +178,7 @@ checkMobileValidation=()=>{
 <input type="password" name="pass" id="password" onChange={this.getPassword}></input><br></br>
    <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.passwordError}</p> 
 
-<label  id="mn">Mobile No :</label>
+<label  id="mnb">Mobile No :</label>
 <input type="text" name="mno" id="mobile" onChange={this.getMobile}></input>
   <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.mobileError}</p> 
 
@@ -184,6 +187,7 @@ checkMobileValidation=()=>{
 
 <button type="submit" value="Submit" id="button" onClick={this.register} disabled={this.state.buttonStatus}>Register</button>
             </div>
+            </div>  
          );
     }
 }

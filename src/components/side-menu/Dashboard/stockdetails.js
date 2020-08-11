@@ -1,8 +1,9 @@
 import React from 'react';
-import Menu from '../products/menu';
 import { Chart } from "react-google-charts";
 import axios from 'axios';
 import '../Dashboard/dashboard.css'
+import Logout from '../../logout/logout';
+import {Link} from 'react-router-dom';
 
 
 class StockDisplay extends React.Component {
@@ -41,7 +42,10 @@ componentDidMount(){
     ]
     render() { 
         return ( 
-
+            <div><Logout></Logout>
+           <div>
+            <Link to="/side-menu"><button id="gobtn">Go Back</button></Link>
+           </div>
             <div>
                 <h2>Stock Details</h2> 
       <div id="chart">          
@@ -76,7 +80,7 @@ componentDidMount(){
     }}
   /></div>
 
-                <Menu></Menu> 
+</div>         
             </div>
         );
 }}

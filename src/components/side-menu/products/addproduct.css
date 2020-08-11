@@ -1,0 +1,84 @@
+body{
+    margin: 100px;
+    text-align: center;
+   
+    }
+  input[type=text],[type=password],[type=number]{
+    width: 70%;
+    margin: 8px 0;
+    padding: 7px 10px;
+    display: inline-block;
+    border:1px solid #ccc;
+   
+    }
+
+    #id,#description,#quantity,#in_stock,#price,#category,#productName{
+        font-family:'Lato', sans-serif;
+      color: black;
+        }
+      
+      
+        #mn{
+          margin-left: 54px;
+        }
+      #un{
+        float: left;
+      }
+      
+      #pd{
+        margin-left:11px;
+        font-size: 17px;
+        border: 1px solid #ccc;
+        padding: 3px 10px;
+        width: 69%;
+        margin-left: 6px;
+        font-size: 17px;
+        
+      
+      }
+
+
+      #pds{
+        padding: 3px 10px;
+        width: 69%;
+          margin-left: 14px;
+          font-size: 17px;
+          border: 1px solid #ccc;
+      }
+        #ln{
+          font-size: 18px;
+        }
+         
+        /* #em{
+        margin-left:30px;
+        } */
+        #productadd{
+            align-items: center;
+            width: 410px;
+            height: 400px;  
+           margin:auto;
+            box-sizing: border-box;
+           
+            
+        }
+  #subbutton{
+      width:116px;
+      text-align: center;
+      margin-left: -13px;
+  }
+
+  #gobtn{
+      width:116px;
+      margin-left:620px;
+      background-color:teal;
+  }
+
+
+  #cat{
+      float: left;
+      margin-left: 18px;
+  }
+  
+  #pdimg{
+      margin-left: -45px;
+  }

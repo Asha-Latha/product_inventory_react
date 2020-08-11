@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import '../../side-menu/products/addproducts.css'
 import {Link} from 'react-router-dom'
+import Logout from '../../logout/logout';
 class EditProduct extends React.Component {
     constructor(props){
         super(props);
@@ -110,6 +111,7 @@ class EditProduct extends React.Component {
     
 
     return(
+        <div><Logout></Logout>
 <div>
 <div>
  <Link to="/side-menu"><button>Go Back</button></Link>
@@ -145,12 +147,12 @@ class EditProduct extends React.Component {
 <label  for="r6" id="mn">Price :</label>
 <input type="text" name="mno" id="price" value={this.state.price} onChange={this.getPrice}></input><br></br>
 
-                    <button type="button" onClick={this.editProduct}>Edit Friend</button>
+                    <button type="button" onClick={this.editProduct}>Edit Product</button>
                     <br></br> 
 
 </form>
 </div>
- 
+</div>
     
     );
 }}
