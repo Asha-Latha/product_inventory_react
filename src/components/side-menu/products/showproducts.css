@@ -36,6 +36,7 @@
     }
   }
   
+  
   /* Style the counter cards */
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -61,7 +62,7 @@
   }
   
 
-  p{
+  #showprdt{
       color:darkcyan;
       font-family: cursive;
       font-size: 17px;

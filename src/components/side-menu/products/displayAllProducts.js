@@ -4,15 +4,14 @@ import AllProducts from './allproducts';
 
 
 class DisplayAllProducts extends React.Component {
-    state = {  }
-    render() { 
-        return ( 
+    state = {}
+    render() {
+        return (
             <div>
-               
                 <AllProducts></AllProducts>
             </div>
-         );
+        );
     }
 }
- 
+
 export default DisplayAllProducts;

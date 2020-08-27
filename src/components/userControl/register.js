@@ -4,190 +4,139 @@ import Axios from 'axios';
 import Login from './login';
 import Header from '../header/header';
 class Register extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={
-            firstName:'',
-            lastName:'',
-            email:'',
-            password:'',
-            mobile:'',
-            buttonStatus: true,
-            firstNameError:'name must contain min 3 characters',
-            lastNameError:'last name must contain 3 characters',
-            emailError:'Enter valid email',
-            passwordError:'password should contain minimum 5 characters',
-            mobileError:'Enter 10 digit mobile no'
-    };
-}
-
-checkFirstNameValidation=()=>{
-if(this.state.firstName.length<=1){
-    this.setState({
-        firstNameError:'Name must contain min 3 characters',
-        buttonStatus:true
-    })}
-    else{
-    this.setState({
-        firstNameError:'',
-        buttonStatus:false
-    }     
-    )
-}
-
-}
-checkLastNameValidation=()=>{
-    if(this.state.lastName.length<=3){
-        this.setState({
-            lastNameError:'Name must contain min 3 characters',
-            buttonStatus:true
-        })}
-        else{
-        this.setState({
-            lastNameError:'',
-            buttonStatus:false
-        }     
-        )
+        this.state = {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            mobile: '',
+            errors: []
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-}
-checkEmailValidation=()=>{
-    if(!this.state.email.includes("@"&&"com")){
-      this.setState({
-          emailError:'Enter valid email',
-          buttonStatus:true
-      })}
-      else{
+    validate = (firstName, lastName, email, password, mobile) => {
+        const errors = [];
+        if (firstName.length < 5) {
+            errors.push("FirstName should contain min 5 characters")
+        }
+        if (lastName.length < 5) {
+            errors.push("LastName should contain min 5 characters")
+        }
+        if (email.length < 5) {
+            errors.push("Email should be at least 5 charcters long");
+        }
+        if (email.split("").filter(x => x === "@").length !== 1) {
+            errors.push("Email should contain a @");
+        }
+        if (email.indexOf(".") === -1) {
+            errors.push("Email should contain at least one dot");
+        }
 
-      this.setState({
-          emailError:'',
-          buttonStatus:false
-      })
+        if (password.length < 2) {
+            errors.push("Password should be at least 6 characters long");
+        }
+        if (mobile.length < 9) {
+            errors.push("Enter valid mobile number")
+        }
+        return errors;
     }
 
-}
-checkPasswordValidation=()=>{
+    getFirstName = (e) => {
 
-    if(this.state.password.length<5){
-      this.setState({
-          passwordError:'Password should contain minimum 5 characters',
-          buttonStatus:true
-      })}
-      else{
-        this.setState({
-            passwordError:'',
-            buttonStatus:false
-        })
-    }
-
-}
-checkMobileValidation=()=>{
-
-    if(this.state.mobile.length<9){
-        this.setState({
-            mobileError:'Enter 10 digits mobile no',
-            buttonStatus:true
-        })
-    }
-   else{
-    this.setState({
-        mobileError:'',
-        buttonStatus:false
-    })
-   }
-}
-    getFirstName=(e)=>{
-        this.checkFirstNameValidation()
-        this.setState({firstName:e.target.value})   
+        this.setState({ firstName: e.target.value })
         console.log(e.target.value);
-        this.checkFirstNameValidation();
+
     }
 
-    getLastName=(e)=>{
-        this.checkLastNameValidation()
-        this.setState({lastName:e.target.value})
+    getLastName = (e) => {
+
+        this.setState({ lastName: e.target.value })
 
         console.log(e.target.value);
-        this.checkLastNameValidation();
+
     }
 
-    getEmail=(e)=>{
-        this.checkEmailValidation()
-        this.setState({email:e.target.value})
+    getEmail = (e) => {
+
+        this.setState({ email: e.target.value })
         console.log(e.target.value);
-        this.checkEmailValidation()
+
     }
 
-    getPassword=(e)=>{
-        this.checkPasswordValidation()
-        this.setState({password:e.target.value})
+    getPassword = (e) => {
+
+        this.setState({ password: e.target.value })
         console.log(e.target.value);
-        this.checkPasswordValidation()
+
     }
-    getMobile=(e)=>{
-        this.checkMobileValidation()
-        this.setState({mobile:e.target.value})
+    getMobile = (e) => {
+
+        this.setState({ mobile: e.target.value })
         console.log(e.target.value);
-        this.checkMobileValidation()
+
     }
 
-    register=()=>{
+    handleSubmit(e) {
+        console.log("Inside register handle submit function")
+        e.preventDefault();
+        const { firstName, lastName, email, password, mobile } = this.state;
+        const errors = this.validate(firstName, lastName, email, password, mobile);
+        if (errors.length > 0) {
+            this.setState({ errors });
+            return;
+        }
+        this.register()
+    }
+
+
+    register = () => {
         console.log('user registration')
         let registerRequestBody = {
             "firstName": this.state.firstName,
             "lastName": this.state.lastName,
-            "email":this.state.email,
-            "password":this.state.password,
-            "mobile":this.state.mobile
+            "email": this.state.email,
+            "password": this.state.password,
+            "mobile": this.state.mobile
         }
-     //   console.log(registerRequestBody)
-  if(this.state.firstNameError===''&&this.state.lastNameError===''&&this.state.emailError===''&&this.state.passwordError==='' && this.state.mobileError===''){
         Axios.post('http://localhost:3000/addregistration', registerRequestBody)
-        .then(response=>{
-            console.log("registration done");
-            console.log(response);
-            this.props.history.push('/login')
-        }, error=>{
-            console.error(error);
-        })
-    }else{
-        alert('Enter valid details')
-    }
+            .then(response => {
+                console.log("registration done");
+                console.log(response);
+                this.props.history.push('/login')
+            }, error => {
+                console.error(error);
+            })
 
     }
-    render() { 
-        return (    
-            <div><Header></Header>  
-            <div id="registerpage">                
-<form action="" >
-<h2>Registration Form</h2>
- 
-<label  id="fn">First Name :</label>
-<input type="text" name="fname" id="firstName" onChange={this.getFirstName}></input><br></br>
-  <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.firstNameError}</p> 
- 
-<label   id="ln">Last Name :</label>
-<input type="text" name="lname" id="lastName" onChange={this.getLastName}></input><br></br>
-   <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.lastNameError}</p> 
+    render() {
 
-<label  id="em">Email :</label>
-<input type="text" name="email" id="email" onChange={this.getEmail}></input><br></br>
-   <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.emailError}</p> 
-  
-<label  id="pwd">Password :</label>
-<input type="password" name="pass" id="password" onChange={this.getPassword}></input><br></br>
-   <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.passwordError}</p> 
-
-<label  id="mnb">Mobile No :</label>
-<input type="text" name="mno" id="mobile" onChange={this.getMobile}></input>
-  <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.mobileError}</p> 
-</form>
-
-<button type="submit" value="Submit" id="button" onClick={this.register} disabled={this.state.buttonStatus}>Register</button>
+        const { errors } = this.state;
+        return (
+            <div><Header></Header>
+                <div id="registerpage">
+                    <form onSubmit={this.handleSubmit}>
+                        {errors.map(error => (
+                            <p key={error}>{error}</p>
+                        ))}
+                        <h2>Registration Form</h2>
+                        <label>First Name :</label>
+                        <input type="text" name="fname" id="firstName" placeholder="firstName" onChange={this.getFirstName}></input><br></br>
+                        <label>Last Name :</label>
+                        <input type="text" name="lname" id="lastName" placeholder="lastName" onChange={this.getLastName}></input><br></br>
+                        <label>Email :</label>
+                        <input type="text" name="email" id="email" placeholder="email" onChange={this.getEmail}></input><br></br>
+                        <label>Password :</label>
+                        <input type="password" name="pass" id="password" placeholder="password" onChange={this.getPassword}></input><br></br>
+                        <label>Mobile No :</label>
+                        <input type="text" name="mno" id="mobile" placeholder="mobile no" onChange={this.getMobile}></input>
+                        <button type="submit" value="Submit" id="button">Register</button></form>
+                </div>
             </div>
-            </div>  
-         );
+        );
     }
 }
- 
+
 export default Register;

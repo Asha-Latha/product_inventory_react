@@ -9,59 +9,65 @@ class Category extends React.Component {
         super(props);
         this.state={    
             cname:'',
-            categoryNameError:'',
-            buttonStatus:true
+            errors: []
         }
-    }
-checkValidateCategoryName=()=>{
-    if(this.state.cname.length<1){
-        this.setState({
-            categoryNameError:'Enter Category',
-            buttonStatus:true
-        })}
-        else{
-        this.setState({
-            categoryNameError:'',
-            buttonStatus:false
-        }     
-        )
-    }
-}
+        this.handleSubmit = this.handleSubmit.bind(this);
+  }
+     
 
 getCategoryName=(e)=>{
-this.checkValidateCategoryName()
+
 this.setState({cname:e.target.value})
-this.checkValidateCategoryName()
+
 }
+validate=(cname)=>{
+    const errors = [];
+if (cname.length < 3) {
+errors.push("Category should be at least 3 charcters long");
+}
+return errors;
+}
+
+handleSubmit(e) {
+    console.log("Inside Addcategory handle submit function")
+    e.preventDefault();
+    const {cname} = this.state;
+    const errors = this.validate(cname);
+    if (errors.length > 0) {
+      this.setState({ errors });
+      return;
+    }
+    this.addCategory()
+  }
 
 addCategory=()=>{
     console.log('add category')
     let addcategory = {
         "categoryName": this.state.cname   
     }
-    if(this.state.categoryNameError==='')
     axios.post('http://localhost:3000/addcategory', addcategory)
     .then(response=>{      
         console.log("added category");
         console.log(response );
+        this.props.history.push('/side-menu')
     }, error=>{
         console.error(error);
     })
 }
 
     render() { 
+        const { errors } = this.state;
         return (
             <div><Logout></Logout>
             <div id="categoryadd">
-             <div>
-            <Link to="/side-menu"><button id="gobtn">Go Back</button></Link>
-           </div>
-    <form name ="">
-      <label  for="r3"> Category Name </label>&nbsp;
-    <input type="text" name="uname" id="catname"  onChange={this.getCategoryName}></input> 
-    <p style={{color:"red",fontSize:12,fontFamily:"italic"}}>{this.state.categoryNameError}</p> 
-    </form>   
-    <Link to="/side-menu"><button type="submit" value="Submit" id="sbtbutton" onClick={this.addCategory} disabled={this.state.buttonStatus}>Add Category</button></Link>
+             
+    <form onSubmit={this.handleSubmit}>
+                {errors.map(error => (
+          <p key={error}>Error: {error}</p>
+        ))}
+       Category Name &nbsp;
+    <input type="text" name="uname" id="catname"  onChange={this.getCategoryName}></input> <br></br><br></br>
+    <button type="submit" value="Submit" id="sbtbutton">Add Category</button></form> 
     </div>
     </div>
           );

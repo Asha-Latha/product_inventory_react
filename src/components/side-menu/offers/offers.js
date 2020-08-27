@@ -13,9 +13,7 @@ class Offers extends React.Component {
         } 
         return ( 
             <div><Logout></Logout>
-            <div>
-            <Link to="/side-menu"><button id="gobtn">Go Back</button></Link>
-           </div>
+            
             <div>
                  
                 <img src={logo} alt="logo" id="offer" style={imgStyle}></img>

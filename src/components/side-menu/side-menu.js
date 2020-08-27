@@ -5,14 +5,14 @@ import Offers from './offers/offers';
 import DisplayAllProducts from './products/displayAllProducts';
 
 class SideMenu extends React.Component {
-    state = {  }
-    render() { 
-        return (     
+    state = {}
+    render() {
+        return (
             <div>
-            <DisplayAllProducts></DisplayAllProducts>
+                <DisplayAllProducts></DisplayAllProducts>
             </div>
         );
     }
 }
- 
+
 export default SideMenu;

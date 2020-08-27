@@ -1,44 +1,64 @@
 {
   "addproduct": [
     {
-      "productimage": "mobile1.jpg",
-      "description": "realme realme realme",
-      "productName": "Realme",
+      "productimage": "chart.png",
+      "description": "kjdhfkdshfk",
+      "productName": "dshjkl",
       "category": "Mobiles",
-      "quantity": "1",
+      "quantity": "2",
       "in_stock": "1",
       "price": "12000",
       "id": 1
     },
     {
-      "productimage": "table.jpg",
-      "description": "table table table",
-      "productName": "Chair",
-      "category": "",
-      "quantity": "1",
-      "in_stock": "1",
-      "price": "1200",
-      "id": 2
-    },
-    {
-      "productimage": "shirt.jpg",
+      "productimage": "mobile1.jpg",
       "description": "shirt shirt shirt",
       "productName": "Shirts",
       "category": "Clothing",
-      "quantity": "2",
-      "in_stock": "1",
-      "price": "1",
+      "quantity": "1",
+      "in_stock": "",
+      "price": "1200",
       "id": 3
     },
     {
+      "productimage": "mobile.png",
+      "description": "mobile",
+      "productName": "dhfjkdsksdg",
+      "category": "Mobiles",
+      "quantity": "1",
+      "in_stock": "1",
+      "price": "12222",
+      "id": 5
+    },
+    {
+      "productimage": "chart.png",
+      "description": "ahsfghj",
+      "productName": "hjgdf",
+      "category": "Mobiles",
+      "quantity": "1",
+      "in_stock": "1",
+      "price": "1",
+      "id": 6
+    },
+    {
+      "productimage": "chart.png",
+      "description": "asdfg",
+      "productName": "asghj",
+      "category": "Mobiles",
+      "quantity": "1",
+      "in_stock": "1",
+      "price": "1200",
+      "id": 9
+    },
+    {
       "productimage": "table.jpg",
-      "description": "table table tab;e",
-      "productName": "Table",
-      "category": "Home",
+      "description": "tablee",
+      "productName": "tablee",
+      "category": "",
       "quantity": "2",
       "in_stock": "1",
-      "price": "12000",
-      "id": 4
+      "price": "2000",
+      "id": 10
     }
   ],
   "addcategory": [
@@ -53,6 +73,14 @@
     {
       "categoryName": "Clothing",
       "id": 3
+    },
+    {
+      "categoryName": "beauty",
+      "id": 4
+    },
+    {
+      "categoryName": "aksjfhkjasf",
+      "id": 5
     }
   ],
   "addregistration": [
@@ -103,6 +131,22 @@
       "password": "",
       "mobile": "9111111111",
       "id": 46
+    },
+    {
+      "firstName": "ashaa",
+      "lastName": "akjfhkjf",
+      "email": "raman@gmail.com",
+      "password": "123456",
+      "mobile": "1234567890",
+      "id": 47
+    },
+    {
+      "firstName": "afjhgfhjgjh",
+      "lastName": "uhdfuiwfui",
+      "email": "ahj@gmail.com",
+      "password": "asdfghjk",
+      "mobile": "1234567890",
+      "id": 48
     }
   ]
 }

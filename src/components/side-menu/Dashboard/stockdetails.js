@@ -3,85 +3,83 @@ import { Chart } from "react-google-charts";
 import axios from 'axios';
 import '../Dashboard/dashboard.css'
 import Logout from '../../logout/logout';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class StockDisplay extends React.Component {
-   constructor(props) {
-       super(props)
-       this.state={
-allproducts:[]
-       }
-   }
-   
-componentDidMount(){
-
-    
-}
-
- componentWillMount(){
-      this.getProducts()
+  constructor(props) {
+    super(props)
+    this.state = {
+      allproducts: []
+    }
   }
 
-  getProducts(){
-      axios.get('http://localhost:3000/addproduct')
-      .then((response)=>{
+  componentDidMount() {
 
-         
-           this.setState({allproducts: response.data})
-           this.state.allproducts.map(p=>{
-               this.stock.push([p.category,parseInt(p.quantity)])
-           })
-          console.log(response)},(error)=>{
-              console.log(error)
-          
+
+  }
+
+  componentWillMount() {
+    this.getProducts()
+  }
+
+  getProducts() {
+    axios.get('http://localhost:3000/addproduct')
+      .then((response) => {
+
+
+        this.setState({ allproducts: response.data })
+        this.state.allproducts.map(p => {
+          this.stock.push([p.category, parseInt(p.quantity)])
+        })
+        console.log(response)
+      }, (error) => {
+        console.log(error)
+
       })
   }
-    stock=[
-        ["category","quantity"]
-    ]
-    render() { 
-        return ( 
-            <div><Logout></Logout>
-           <div>
-            <Link to="/side-menu"><button id="gobtn">Go Back</button></Link>
-           </div>
-            <div>
-                <h2>Stock Details</h2> 
-      <div id="chart">          
-  <Chart
-    width={'600px'}
-    height={'400px'}
-    backgroundColor={'#F8F0EE'}
-    chartType="PieChart"
-    loader={<div>Loading Chart</div>}
-    data={this.stock}
-    options={{
-        is3D:true,
-      title: 'Stock availability',
-      
-    //   chartArea: { width: '20%' },
-    }}
-  /></div>
-<div id="column">
-<Chart
-    width={'600px'}
-    height={'400px'}
-    style={{background:'#F8F0EE'}}
-    chartType="ColumnChart"
-    loader={<div>Loading Chart</div>}
-    data={this.stock}
-    options={{
-        is3D:true,
-      title: 'Stock availability',
-      background:'#F8F0EE'
-      
-    //   chartArea: { width: '20%' },
-    }}
-  /></div>
+  stock = [
+    ["category", "quantity"]
+  ]
+  render() {
+    return (
+      <div><Logout></Logout>
 
-</div>         
-            </div>
-        );
-}}
+        <div>
+          <h2>Stock Details</h2>
+          <div id="chart">
+            <Chart
+              width={'600px'}
+              height={'400px'}
+              backgroundColor={'#F8F0EE'}
+              chartType="PieChart"
+              loader={<div>Loading Chart</div>}
+              data={this.stock}
+              options={{
+                is3D: true,
+                title: 'Stock availability',
+
+              }}
+            /></div>
+          <div id="column">
+            <Chart
+              width={'600px'}
+              height={'400px'}
+              style={{ background: '#F8F0EE' }}
+              chartType="ColumnChart"
+              loader={<div>Loading Chart</div>}
+              data={this.stock}
+              options={{
+                is3D: true,
+                title: 'Stock availability',
+                background: '#F8F0EE'
+
+              }}
+            /></div>
+
+        </div>
+      </div>
+    );
+  }
+}
 export default StockDisplay;

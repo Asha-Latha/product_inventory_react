@@ -1,7 +1,12 @@
 body{
     background-color: #F8F0EE;
-    
+    background-image: url("https://previews.123rf.com/images/zven0/zven01603/zven0160300013/54795590-abstract-high-tech-background-in-white-and-gray-tones.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
 }
+
+
 #logo {
     height: 120px;
         float: left;
@@ -10,13 +15,15 @@ body{
       
     } 
     h4{
+       text-align: center;
         font-size: 43px;
         text-align: center;
         /* float: left; */
         margin-top: -82px;
-        margin-right: 175px;
+        margin-right: 0px;
         font-style: italic;
         font-family: unset;
+        color:crimson;
     }
 
     #login {
@@ -36,5 +43,24 @@ body{
         margin-top: -104px;
     }
 
+    #leftarrow{
+        margin-right: -87px;
+        height: 64px;
+        float: right;
+        margin-top: -119px;
+        /* margin-left: -65px; */
+        width: 50px;
+    }
+    
+    #fieldset{
+               
+      }
+    
+      #legend{
+        background-color: gray;
+        color: white;
+        padding: 5px 2px;
+      }
+   
     
 
